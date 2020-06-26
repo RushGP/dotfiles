@@ -7,8 +7,7 @@
  '(custom-safe-themes
    (quote
     ("00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" default)))
- '(helm-display-header-line nil)
- '(openwith-associations
+  '(openwith-associations
    (quote
     (("\\.djvu\\'" "zathura"
       (file))
@@ -24,7 +23,7 @@
  '(org-roam-directory "~/Dropbox/roam/")
  '(package-selected-packages
    (quote
-    (org-roam-server helm ivy deft use-package org-roam solarized-theme org-bullets flyspell-correct olivetti wc-mode openwith))))
+    (org-roam-server ivy deft use-package org-roam solarized-theme org-bullets flyspell-correct olivetti wc-mode openwith))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
