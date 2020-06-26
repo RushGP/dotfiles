@@ -24,7 +24,7 @@
  '(org-roam-directory "~/Dropbox/roam/")
  '(package-selected-packages
    (quote
-    (helm ivy deft use-package org-roam solarized-theme org-bullets flyspell-correct olivetti wc-mode openwith))))
+    (org-roam-server helm ivy deft use-package org-roam solarized-theme org-bullets flyspell-correct olivetti wc-mode openwith))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
