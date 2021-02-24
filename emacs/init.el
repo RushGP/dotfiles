@@ -17,7 +17,7 @@
 (display-time-mode 1)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
-(load-theme 'solarized-light t)
+;; (load-theme 'solarized-light t)
 
 ;; backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -69,6 +69,9 @@ With argument ARG, do this that many times."
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'turn-on-typopunct-mode)
 (setq olivetti-body-width 100)
+(setq org-indent-indentation-per-level 1)
+(setq org-adapt-indentation nil)
+(setq org-hide-emphasis-markers t)
 
 ;; spellchecker
 (with-eval-after-load "ispell"
@@ -119,16 +122,26 @@ With argument ARG, do this that many times."
       (after-init . org-roam-mode)
       :custom
       (org-roam-directory "~/Dropbox/roam/")
+      (org-roam-dailies-directory "daily")
       :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
                ("C-c n b" . org-roam-buffer-toggle-display)
-               ("C-c n g" . org-roam-graph)
-	       ("C-c n t" . org-roam-dailies-today))
+               ;; ("C-c n g" . org-roam-graph)
+	       ("C-c n t" . org-roam-dailies-find-today))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))))
 
 (setq org-roam-graph-viewer "/usr/bin/gwenview")
+(setq org-roam-db-update-method 'immediate)
+
+(use-package org-randomnote
+  :ensure t
+  :bind ("C-c r" . org-randomnote))
+
+(load-library "find-lisp")
+(setq org-randomnote-candidates
+      (find-lisp-find-files "~/Dropbox/roam/" "\.org$"))
 
 ;; deft
 (setq deft-auto-save-interval nil)
@@ -140,4 +153,9 @@ With argument ARG, do this that many times."
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
-  (deft-directory "~/Dropbox/roam/"))
+  (deft-directory "~/Dropbox/roam"))
+
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
+(setq process-connection-type nil)
