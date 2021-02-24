@@ -158,4 +158,5 @@ With argument ARG, do this that many times."
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
+;; resolve the problem with xdg-open not opening files
 (setq process-connection-type nil)
