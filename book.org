@@ -5,3 +5,7 @@ Well, this is supposed to be a book...
 * Doing better
 
 This is another way to add a commit.
+
+* Doing it on another machine
+
+This is the final test before the real test :D
