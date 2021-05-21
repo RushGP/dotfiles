@@ -17,7 +17,7 @@
 (display-time-mode 1)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
-;; (load-theme 'solarized-light t)
+(setq split-width-threshold 1)
 
 ;; backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -112,17 +112,14 @@ With argument ARG, do this that many times."
 ;; (setq recentf-max-menu-items 25)
 ;; (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-;; open pdfs in zathura and others
-(require 'openwith)
-(openwith-mode t)
-
 ;; roam
 (use-package org-roam
       :hook
       (after-init . org-roam-mode)
       :custom
-      (org-roam-directory "~/Dropbox/roam/")
+      (org-roam-directory "~/cabinet/")
       (org-roam-dailies-directory "daily")
+      (org-roam-completion-system 'ivy)
       :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
@@ -132,7 +129,7 @@ With argument ARG, do this that many times."
               :map org-mode-map
               (("C-c n i" . org-roam-insert))))
 
-(setq org-roam-graph-viewer "/usr/bin/gwenview")
+;; (setq org-roam-graph-viewer "/usr/bin/gwenview")
 (setq org-roam-db-update-method 'immediate)
 
 (use-package org-randomnote
@@ -141,7 +138,7 @@ With argument ARG, do this that many times."
 
 (load-library "find-lisp")
 (setq org-randomnote-candidates
-      (find-lisp-find-files "~/Dropbox/roam/" "\.org$"))
+      (find-lisp-find-files "~/cabinet/" "\.org$"))
 
 ;; deft
 (setq deft-auto-save-interval nil)
@@ -153,10 +150,9 @@ With argument ARG, do this that many times."
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
-  (deft-directory "~/Dropbox/roam"))
+  (deft-directory "~/cabinet/"))
 
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
-
-;; resolve the problem with xdg-open not opening files
-(setq process-connection-type nil)
+(setq evil-respect-visual-line-mode t)
+(setq evil-toggle-key "C-'")
+(require 'evil)
+(evil-mode 1)

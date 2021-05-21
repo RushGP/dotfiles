@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while :
+do
+    notify-send "Start working!"
+    mpc toggle
+    sleep 3600
+    notify-send "Take a break!"
+    mpc toggle
+    sleep 600
+done
